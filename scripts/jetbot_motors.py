@@ -73,7 +73,8 @@ def on_cmd_str(msg):
 
 # initialization
 if __name__ == '__main__':
-
+	rospy.init_node('jetbot_motors')
+        rospy.loginfo('initializing motors')
 	# setup motor controller
 	motor_driver = Adafruit_MotorHAT(i2c_bus=1)
 
@@ -87,12 +88,11 @@ if __name__ == '__main__':
 	all_stop()
 
 	# setup ros node
-	rospy.init_node('jetbot_motors')
 	
 	rospy.Subscriber('~cmd_dir', String, on_cmd_dir)
 	rospy.Subscriber('~cmd_raw', motor_drive_input, on_cmd_raw)
 	rospy.Subscriber('~cmd_str', String, on_cmd_str)
-
+        rospy.loginfo('motors initialized')
 	# start running
 	rospy.spin()
 
