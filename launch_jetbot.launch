@@ -1,5 +1,0 @@
-<launch>
-  <arg name="project" default="jetbot_ros"/>
-  <node name="camera_node" pkg="$(arg project)" type="jetbot_camera" output="screen"/>
-  <node	name="motors_node" pkg="$(arg project)" type="jetbot_motors" output="screen"/>
-</launch>
